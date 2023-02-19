@@ -1,0 +1,9 @@
+version: "2"
+
+services:
+  envoy:
+    image: envoyproxy/envoy-alpine:v1.10.0
+    network_mode: "host"
+    volumes:
+      - "./envoy.yaml:/etc/envoy/envoy.yaml"
+    mem_limit: 50000000 # 50 MB

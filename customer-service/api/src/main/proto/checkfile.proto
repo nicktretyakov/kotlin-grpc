@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.check";
+option java_outer_classname = "CheckFileProto";
+option objc_class_prefix = "HLW";
+
+package check;
+
+// The greeting service definition.
+service Greeter {
+
+    // Sends a greeting
+    rpc SayCheck (CheckRequest) returns (CheckReply);
+
+    // Streams a many greetings
+    rpc SayCheckStreaming (stream CheckRequest) returns (stream CheckReply);
+
+    rpc SayCheckClientStreaming (stream CheckRequest) returns (CheckReply);
+
+    rpc SayCheckServerStreaming (CheckRequest) returns (stream CheckReply);
+}
+
+// The request message containing the user's name.
+message CheckRequest {
+  // The user's name
+  string name = 1;
+}
+
+// The response message containing the greetings
+message CheckReply {
+  // The greetings
+  string message = 1;
+}
